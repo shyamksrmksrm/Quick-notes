@@ -1,0 +1,134 @@
+LINKED SERVICES:
+===============
+1. ADLS GEN2 | 2. Databricks | 3. Key Vault
+
+
+Creating Azure SQL DB : 
+
+create table valid_order_status(status_name varchar(50))
+
+insert into valid_order_status
+values('ON_HOLD'),('PAYMENT_REVIEW'),('PROCESSING'),('CLOSED'),('S
+USPECTED_FRAUD'),('COMPLETE'),('PENDING'),('CANCELED'),('PENDIN
+G_PAYMENT')select * from valid_order_status
+
+dbutils.fs.mount(source='wasbs://sales@trendtechsa.blob.core.windows.net',
+		     mount_point = '/mnt/sales',
+		     extra_configs={'fs.azure.account.key.trendtechsa.blob.core.windows.net':'MQs
+		     Edge/QEAbx95+lIlFcujt5AnU7Q9ErfjTiDEEXkBv4jHFNfsTEozFawfr8KUUrkd3
+		     qf9/LSDZ+AStDaWbXw=='})
+
+
+sales@trendtechsa : “sales” - Container name
+			  “trendtechsa” - Storage account name
+
+https://<databricks-instance>#secrets/createScope
+
+
+First Validation Check:
+======================
+errorFlg = False
+ordersCount = ordersDf.count()
+distinctOrdersCount = ordersDf.select(‘order_id’).distinct().count()
+
+if ordersCount != distinctOrdersCount
+errorFlg = True
+
+if errorFlg :
+dbutils.fs.mv(‘/mnt/sales/landing/orders.csv’,’/mnt/sales/discarded’)
+dbutil.notebook.exit(‘{“errorFlg”: “true”, “errorMsg”: “Orderid is
+repeated”}’)
+
+ordersDf.createOrReplaceTempView(“orders”)
+
+
+connectionUrl =
+‘jdbc:sqlserver://{}.database.windows.net:{};database={};user={};’.format(dbServer, dbPort, dbName, dbUser)
+
+dbPassword = 
+ dbutils.secrets.get(scope = databricksScope, key=’sql-password’)
+
+connectionProperties = {
+‘password’ : dbPassword,
+‘driver’: ‘com.microsoft.sqlserver.jdbc.SQLServerDriver’
+}
+
+
+Connecting to the SQL Database for order_status:
+===============================================
+validStatusDf = spark.read.jdbc(url = connectionUrl, table =‘dbo.valid_order_status’, properties = connectionProperties)
+
+
+Notebook exited: {"errorflag:"false","errorMsg:"All Good"}
+
+
+Creating a Pipeline in Azure Data Factory (Automating the pipeline execution):
+=============================================================================
+-> Add the Databricks Notebook to the pipeline.
+-> In the Settings tab, Select the Notebook to execute
+-> Add Trigger -> Type (Storage Event Trigger) -> Storage Account Name ->
+   Container Name (Ex: Sales) -> Path Begins with (Ex: Landing) -> Path Ends with(Ex: orders.csv)
+   -> Continue.
+-> Monitor tab gives an overview of all the triggered pipelines
+-> Process
+Once the data is uploaded in the specified container in the storage
+account, Storage event triggers the pipeline execution by launching the
+cluster and the databricks notebook will be executed. Once the
+execution is complete, the cluster deployed for the pipeline execution
+will be terminated.
+
+
+Adopting a parameterized approach to dynamically read files, moving
+away from hardcoding specific filenames.
+
+TriggerBody —> Pipeline —> databricks Notebook
+
+[Code]
+filename = dbutils.widgets.get('filename') # The filename will be taken from the
+pipeline
+fnamewithoutExt = filename.split('.')[0]
+print(filename)
+OrdersDf = spark.read.csv('/mnt/sales/landing/{}'.format(filename), inferSchema = True , header = True)
+
+
+Note:
+-> Trigger(First point of contact) should have the capability to dynamically
+   capture the filenames of the newly added files in the Storage Account and
+   pass it to the Pipeline.
+   In this context, the file names are no longer hardcoded; instead, they are
+   dynamically retrieved from the pipeline and stored in the "filename" variable.
+   The DataFrame is then created using the “filename” variable.
+-> We are retrieving the filename from the triggerbody
+   (@triggerBody().filename)
+-> Changes to be made in the Notebook
+   filename = dbutils.widgets.get(‘filename’)
+   Fnamewithoutext = filename.split(‘.’)[0]
+
+
+
+alreadyMounted = False
+for x in dbutils.fs.mounts() :
+	if x.mountPoint == “/mnt/sales” :
+		alreadyMounted = True
+		break
+
+	else
+		alreadyMounted = False
+		print(alreadyMounted)
+
+
+if not alreadyMounted :
+	dbutils.fs.mount(
+				source='wasbs://sales@trendtechsa.blob.core.windows.net',
+				mount_point = '/mnt/sales',
+				extra_configs={'fs.azure.account.key.trendtechsa.blob.core.windows.net
+				':'MQsEdge/QEAbx95+lIlFcujt5AnU7Q9ErfjTiDEEXkBv4jHFNfsTEozFawfr8KU
+				Urkd3qf9/LSDZ+AStDaWbXw=='})
+
+	alreadyMounted = True
+	print(“Mounting done successfully”)
+
+else
+print(“Already mounted”)
+
+
