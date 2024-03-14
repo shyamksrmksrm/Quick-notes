@@ -1,0 +1,769 @@
+> git status
+fatal: not a git repository (or any of the parent directories): .git
+> git --version
+git version 2.44.0.windows.1
+>
+
+
+
+> git init
+Initialized empty Git repository in C:/Users/shyam/Desktop/git_practice/.git/
+> git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+>
+
+
+
+> git status
+fatal: not a git repository (or any of the parent directories): .git
+> git init -b main
+Initialized empty Git repository in C:/Users/shyam/Desktop/git_practice/.git/
+> git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+>
+
+
+
+> git config --global user.name "shyam"
+> git config --global user.email "shyam@gmail.com"
+> git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+>
+
+
+CREATE A FILE NAMED "first_file.txt" WITH "First Line + enter"
+==============================================================
+
+> git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        first_file.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+>
+
+
+
+> git add first_file.txt
+> git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   first_file.txt
+
+>
+
+
+
+> git log
+fatal: your current branch 'main' does not have any commits yet
+> git commit -m "My first commit"
+[main (root-commit) 38e52cf] My first commit
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 first_file.txt
+> git log
+commit 38e52cf7d63f24d169aa16af9c2af033bea312f5 (HEAD -> main)
+Author: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 00:43:16 2024 +0530
+
+    My first commit
+> 
+
+
+
+
+> git status
+On branch main
+nothing to commit, working tree clean
+>
+
+
+
+ADD "Second Line + enter" to first_file.txt
+===========================================
+
+
+> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+>
+
+
+
+> git commit -a -m "My second commit"
+[main 141a2eb] My second commit
+ 1 file changed, 2 insertions(+)
+> git status
+On branch main
+nothing to commit, working tree clean
+> git log
+commit 141a2ebb3c14080447e2e6c8ca61021ffa30091e (HEAD -> main)
+Author: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 00:47:40 2024 +0530
+
+    My second commit
+
+commit 38e52cf7d63f24d169aa16af9c2af033bea312f5
+Author: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 00:43:16 2024 +0530
+
+    My first commit
+:
+
+
+
+
+ADD "Third Line + enter" to first_file.txt
+===========================================
+
+
+> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+>
+
+
+> git diff
+diff --git a/first_file.txt b/first_file.txt
+index 41b6522..b0d816c 100644
+--- a/first_file.txt
++++ b/first_file.txt
+@@ -1,2 +1,3 @@
+ First Line
+ Second Line
++Third Line
+>
+
+
+ADD "Fourth Line" to first_file.txt
+===========================================
+
+> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+>
+
+
+> git diff
+diff --git a/first_file.txt b/first_file.txt
+index b0d816c..b294ff6 100644
+--- a/first_file.txt
++++ b/first_file.txt
+@@ -1,3 +1,4 @@
+ First Line
+ Second Line
+ Third Line
++Fourth Line
+\ No newline at end of file
+>
+
+
+> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+> git commit -a -m "My fourth commit"
+[main 9da6169] My fourth commit
+ 1 file changed, 1 insertion(+)
+> git status
+On branch main
+nothing to commit, working tree clean
+>
+
+
+
+ADD "Fifth Line" to first_file.txt AND STAGE IT
+===============================================
+
+> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first_file.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+> git add first_file.txt
+> git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   first_file.txt
+
+> git diff
+> git diff --staged
+diff --git a/first_file.txt b/first_file.txt
+index b294ff6..218e592 100644
+--- a/first_file.txt
++++ b/first_file.txt
+@@ -1,4 +1,5 @@
+ First Line
+ Second Line
+ Third Line
+-Fourth Line
+\ No newline at end of file
++Fourth Line
++Fifth Line
+\ No newline at end of file
+(END)
+
+
+
+ADD "Sixth Line" to first_file.txt AND ADD "Readme.md" & "creds.txt" FILES
+==========================================================================
+
+
+> git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   first_file.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        Readme.md
+        creds.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+>
+
+
+
+> git add .
+> git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   Readme.md
+        new file:   creds.txt
+        modified:   first_file.txt
+
+>
+
+
+
+> git commit -m "readme and story 3.2"
+[main c1b4223] readme and story 3.2
+ 3 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 Readme.md
+ create mode 100644 creds.txt
+> git status
+On branch main
+nothing to commit, working tree clean
+>
+
+
+
+
+DELETE "creds.txt"
+==================
+
+> git status
+On branch main
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    creds.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+> 
+
+
+
+> git rm --cached creds.txt
+rm 'creds.txt'
+> git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    creds.txt
+
+>
+
+
+
+> git commit -m "removed the creds file"
+[main 6335917] removed the creds file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 creds.txt
+> git status
+On branch main
+nothing to commit, working tree clean
+>
+
+
+
+
+
+
+REMOTE:
+======
+
+
+
+> git remote -v
+>
+
+
+
+> git clone https://github.com/shyamksrmksrm/git_practice.git
+Cloning into 'git_practice'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+> git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        git_practice/
+
+nothing added to commit but untracked files present (use "git add" to track)
+>
+
+
+
+
+> git add .
+> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   git_practice
+
+> 
+
+
+
+
+> git commit -m "committing in local laptop"
+[master (root-commit) 6acb42a] committing in local laptop
+ 1 file changed, 1 insertion(+)
+ create mode 160000 git_practice
+> git status
+On branch master
+nothing to commit, working tree clean
+> git remote -v
+> git remote add origin https://github.com/shyamksrmksrm/git_practice.git
+> git remote -v
+origin  https://github.com/shyamksrmksrm/git_practice.git (fetch)
+origin  https://github.com/shyamksrmksrm/git_practice.git (push)
+>
+
+
+
+
+> git pull origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 870 bytes | 79.00 KiB/s, done.
+From https://github.com/shyamksrmksrm/git_practice
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+fatal: refusing to merge unrelated histories
+>
+
+
+
+> cd git_practice
+
+
+
+
+> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        first.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+> git add .
+>
+
+
+
+> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   first.txt
+
+> git commit -m "adding to my lap"
+[main 83dfa48] adding to my lap
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 first.txt
+> git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+>
+
+
+
+> git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 272 bytes | 272.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/shyamksrmksrm/git_practice.git
+   eb6b748..83dfa48  main -> main
+> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+>
+
+
+
+
+> git pull origin main
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 942 bytes | 94.00 KiB/s, done.
+From https://github.com/shyamksrmksrm/git_practice
+ * branch            main       -> FETCH_HEAD
+   83dfa48..23aa9d7  main       -> origin/main
+Updating 83dfa48..23aa9d7
+Fast-forward
+ first.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+>
+
+
+
+TAG:
+====
+
+
+> git tag
+> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+> git tag -a v1.0 -m "1st release"
+> git tag
+v1.0
+>
+
+
+
+> git show v1.0
+tag v1.0
+Tagger: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 10:11:54 2024 +0530
+
+1st release
+
+commit 23aa9d7c5984e860500c5307a8797cfcbcf05991 (HEAD -> main, tag: v1.0, origin/main, origin/HEAD)
+Author: shyamksrmksrm <157090869+shyamksrmksrm@users.noreply.github.com>
+Date:   Thu Mar 14 09:59:46 2024 +0530
+
+    Update first.txt
+
+diff --git a/first.txt b/first.txt
+index e69de29..1a5f7ef 100644
+--- a/first.txt
++++ b/first.txt
+@@ -0,0 +1,4 @@
++a^M
++b^M
++c^M
++d^M
+>
+
+
+
+
+> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        second.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+>
+
+
+
+> git add .
+> git commit -m "processing user data"
+[main 67025eb] processing user data
+ 1 file changed, 1 insertion(+)
+ create mode 100644 second.txt
+>
+
+
+
+> git tag v1.1 -m "14th March realease"
+> git tag
+v1.0
+v1.1
+> 
+
+
+
+> git show v1.1
+tag v1.1
+Tagger: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 10:17:30 2024 +0530
+
+14th March realease
+
+commit 67025ebbc8a9610e16646572ca519e3b521bb5ee (HEAD -> main, tag: v1.1)
+Author: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 10:16:50 2024 +0530
+
+    processing user data
+
+diff --git a/second.txt b/second.txt
+new file mode 100644
+index 0000000..f2ba8f8
+--- /dev/null
++++ b/second.txt
+@@ -0,0 +1 @@
++abc
+\ No newline at end of file
+>
+
+
+
+> git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 309 bytes | 154.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/shyamksrmksrm/git_practice.git
+   23aa9d7..67025eb  main -> main
+> 
+
+
+
+AFTER RUNNING ABOVE COMMAND YOU CAN'T SEE ANY CHANGES IN TAGS IN GITHUB
+
+
+
+> git push origin v1.0
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 153 bytes | 153.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/shyamksrmksrm/git_practice.git
+ * [new tag]         v1.0 -> v1.0
+> 
+
+
+
+BRANCH:
+======
+> git checkout -b feature1
+Switched to a new branch 'feature1'
+> git status
+On branch feature1
+nothing to commit, working tree clean
+>
+
+
+> git branch
+* feature1
+  main
+>
+
+
+
+
+> git status
+On branch feature1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   second.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+> 
+
+
+
+> git add .
+> git commit -m "experimenting user avatar"
+[feature1 fa505ac] experimenting user avatar
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+>
+
+
+> git push origin v1.0
+Everything up-to-date
+>
+
+
+> git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+> git switch feature1
+Switched to branch 'feature1'
+>
+
+
+> git switch -c feature2
+Switched to a new branch 'feature2'
+>
+
+
+> git branch
+  feature1
+* feature2
+  main
+> 
+
+
+> git switch -
+Switched to branch 'feature1'
+>
+
+
+> git branch -d feature2
+Deleted branch feature2 (was fa505ac).
+> 
+
+
+> git push origin feature1
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 261 bytes | 130.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'feature1' on GitHub by visiting:
+remote:      https://github.com/shyamksrmksrm/git_practice/pull/new/feature1
+remote:
+To https://github.com/shyamksrmksrm/git_practice.git
+ * [new branch]      feature1 -> feature1
+>
+
+
+
+> git log
+commit fa505ac6380e3e5e51509a6b58d6231e631570ef (HEAD -> feature1, origin/feature1)
+Author: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 10:23:50 2024 +0530
+
+    experimenting user avatar
+
+commit 67025ebbc8a9610e16646572ca519e3b521bb5ee (tag: v1.1, origin/main, origin/HEAD, main)
+Author: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 10:16:50 2024 +0530
+
+    processing user data
+
+commit 23aa9d7c5984e860500c5307a8797cfcbcf05991 (tag: v1.0)
+Author: shyamksrmksrm <157090869+shyamksrmksrm@users.noreply.github.com>
+Date:   Thu Mar 14 09:59:46 2024 +0530
+
+    Update first.txt
+
+commit 83dfa4894c7d6963b18f1700a2ce75ca47eb4682
+Author: shyam <shyam@gmail.com>
+Date:   Thu Mar 14 09:56:20 2024 +0530
+
+    adding to my lap
+
+commit eb6b748ecf322430c568d8551fead834c6973ccc
+Author: shyamksrmksrm <157090869+shyamksrmksrm@users.noreply.github.com>
+Date:   Thu Mar 14 01:18:13 2024 +0530
+:
+
+
+
+
+
+
+> git branch
+* feature1
+  main
+> git status
+On branch feature1
+nothing to commit, working tree clean
+> git switch main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+> git merge feature1
+Updating 67025eb..fa505ac
+Fast-forward
+ second.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+>
+
+
+
+
+
+> git push origin main
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/shyamksrmksrm/git_practice.git
+   67025eb..fa505ac  main -> main
+> 
+
+
