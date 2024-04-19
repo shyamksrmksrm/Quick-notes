@@ -1,0 +1,473 @@
+print ('Hello' in mystr1) # String membership
+
+
+str5 = "Natural language processing with Python and R and Java"
+L = str5.partition("and")
+print(L)
+
+('Natural language processing with Python ', 'and', ' R and Java')
+
+
+str5 = "Natural language processing with Python and R and Java"
+L = str5.rpartition("and")
+print(L)
+
+('Natural language processing with Python and R ', 'and', ' Java')
+
+
+mystr2.strip() # Removes white space from begining & end
+mystr2.rstrip() # Removes all whitespaces at the end of the string
+mystr2.lstrip() # Removes all whitespaces at the begining of the string
+mystr2.strip('*') # Removes all '*' characters from begining & end of the string
+mystr2.rstrip('*') # Removes all '*' characters at the end of the string
+mystr2.lstrip('*') # Removes all '*' characters at the begining of the string
+mystr2.lower() # Return whole string in lowercase 
+mystr2.upper() # Return whole string in uppercase 
+mystr2.replace("He" , "Ho") #Replace substring "He" with "Ho"
+mystr2.replace(" " , "") # Remove all whitespaces using replace function
+mystr5.count("one") # Number of times substring "one" occurred in string.
+mystr5.startswith("one") # Return boolean value True if string starts with "one"
+mystr5.endswith("three") # Return boolean value True if string ends with "three"
+mylist = mystr4.split() # Split String into substrings(white space)   #String to list
+str2 = str2.center(100) # center align the string using a specific character as t
+str2 = str2.center(100,'*') # center align the string using a specific character
+str2 = str2.rjust(50) # Right align the string using a specific character as the 
+str2 = str2.rjust(50,'*') # Right align the string using a specific character ******************************** WELCOME EVERYONE 
+loc = str4.find("five") # Find the location of word 'five' in the string "str4"
+loc = str4.index("five") # Find the location of word 'five' in the string "str4"
+loc = str6.rfind("one") # last occurrence of word 'one' in string "str6"
+loc = str6.rindex("one") # last occurrence of word 'one' in string "str6"
+mystr6 = '123456789'
+print(mystr6.isalpha()) # returns True if all the characters in the text are lett
+print(mystr6.isalnum()) # returns True if a string contains only letters or numb
+print(mystr6.isdecimal()) # returns True if all the characters are decimals (0-9)
+print(mystr6.isnumeric()) # returns True if all the characters are numeric (0-9)
+print(mystr7.isupper()) # Returns True if all the characters are in upper case
+print(mystr7.islower()) # Returns True if all the characters are in lower case
+
+
+
+# Combining string & numbers using format method
+item1 = 40
+item2 = 55
+item3 = 77
+res = "Cost of item1 , item2 and item3 are {} , {} and {}"
+print(res.format(item1,item2,item3))
+
+Cost of item1 , item2 and item3 are 40 , 55 and 77
+
+
+# Combining string & numbers using format method
+item1 = 40
+item2 = 55
+item3 = 77
+res = "Cost of item3 , item2 and item1 are {2} , {1} and {0}"
+print(res.format(item1,item2,item3))
+
+Cost of item3 , item2 and item1 are 77 , 55 and 40
+
+
+
+#Using escape character to allow illegal characters
+mystr = "My favourite series is \"Game of Thrones\""
+
+My favourite series is "Game of Thrones"
+
+
+list4[0][0] # Nested indexing - Access the first character of the first list elem
+
+
+mylist.append('nine') # Add an item to the end of the list
+mylist.insert(9,'ten') # Add item at index location 9
+mylist.insert(1,'ONE') # Add item at index location 1
+mylist.remove('ONE') # Remove item "ONE"
+mylist.pop() # Remove last item of the list
+mylist.pop(8) # Remove item at index location 8
+del mylist[7] # Remove item at index location 7
+mylist.clear() # Empty List / Delete all items in the list,list persist
+del mylist # Delete the whole list
+
+list3 = list1 + list2 # Join two lists by '+' operator
+list1.extend(list2) #Append list2 with list1
+'one' in list1 # Check if 'one' exist in the list
+'ten' in list1 # Check if 'ten' exist in the list
+
+list1.reverse() # Reverse the list
+list1 = list1[::-1] # Reverse the list
+mylist3.sort() # Sort list in ascending order
+mylist3.sort(reverse=True) # Sort list in descending order
+sorted(mylist4) # Returns a new sorted list and doesn't change original li
+list10.count('one') # Number of times item "one" occurred in the list.
+
+
+
+# Change value of the string
+
+mylist = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'
+mylist1 = mylist # Create a new reference "mylist1"
+mylist2 = mylist.copy() # Create a copy of the list, it will work for set as well
+id(mylist) , id(mylist1) # The address of both mylist & mylist1 will be the same 
+id(mylist2) # The address of mylist2 will be different from mylist because mylist
+mylist[0] = 1
+mylist
+ [1, 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+mylist1 # mylist1 will be also impacted as it is pointing to the same list
+ [1, 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+mylist2 # Copy of list won't be impacted due to changes made on the original list
+ ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten']
+
+
+
+L1 = [1,2,3,4,0]
+L2 = [1,2,3,4,True,False]
+L3 = [1,2,3,True]
+all(L1) # Will Return false as one value is false (Value 0)
+any(L1) # Will Return True as we have items in the list with True value
+all(L2) # Returns false as one value is false
+any(L2) # Will Return True as we have items in the list with True value
+all(L3) # Will return True as all items in the list are True
+any(L3) # Will Return True as we have items in the list with True value
+
+List Comprehensions
+mystring = "WELCOME"
+mylist = [ i for i in mystring ] # Iterating through a string Using List Comprehe
+['W', 'E', 'L', 'C', 'O', 'M', 'E']
+mylist1 = [ i for i in range(40) if i % 2 == 0] # Display all even numbers betwee
+mylist2 = [ i for i in range(40) if i % 2 == 1] # Display all odd numbers between
+mylist3 = [num**2 for num in range(10)] # calculate square of all numbers between
+list1 = [i*10 for i in list1]
+ 
+#List all numbers divisible by 3 , 9 & 12 using nested "if" with List Comprehensi
+mylist4 = [i for i in range(200) if i % 3 == 0 if i % 9 == 0 if i % 12 == 0]
+
+
+# Odd even test
+l1 = [print("{} is Even Number".format(i)) if i%2==0 else print("{} is odd number
+0 is Even Number
+1 is odd number
+2 is Even Number
+3 is odd number
+4 is Even Number
+5 is odd number
+6 is Even Number
+7 is odd number
+8 is Even Number
+9 is odd number
+
+
+# Extract numbers from a string
+mystr = "One 1 two 2 three 3 four 4 five 5 six 6789"
+numbers = [i for i in mystr if i.isdigit()]
+numbers
+ ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+
+# Extract letters from a string
+mystr = "One 1 two 2 three 3 four 4 five 5 six 6789"
+numbers = [i for i in mystr if i.isalpha()]
+numbers
+['O',
+ 'n',
+ 'e',
+ 't'
+
+
+del mytuple[0] # Tuples are immutable which means we can't DELETE tuple items
+mytuple[0] = 1 # Tuples are immutable which means we can't CHANGE tuple items
+del mytuple # Deleting entire tuple object is possible
+
+sorted(mytuple2) # Returns a new sorted list and doesn't change original tuple
+sorted(mytuple2, reverse=True) # Sort in descending order
+
+
+myset3 = {10,20, "Hola", [11, 22, 32]} # set doesn't allow mutable items like lis
+TypeError: unhashable type: 'list'
+myset4 = set() # Create an empty set
+my_set = {1,1,2,2,3,4,5,5}
+my_set1 = set(('one' , 'two' , 'three' , 'four'))
+
+
+myset.add('NINE') # Add item to a set using add() method
+myset.update(['TEN' , 'ELEVEN' , 'TWELVE']) # Add multiple item to a set using u
+myset.remove('NINE') # remove item in a set using remove() method
+myset.discard('TEN') # remove item from a set using discard() method
+myset.clear() # Delete all items in a set
+del myset # Delete the set object
+
+
+Set Operation
+A = {1,2,3,4,5}
+B = {4,5,6,7,8}
+C = {8,9,10}
+A | B # Union of A and B (All elements from both sets. NO DUPLICATES)
+{1, 2, 3, 4, 5, 6, 7, 8}
+A.union(B) # Union of A and B
+{1, 2, 3, 4, 5, 6, 7, 8}
+A.union(B, C) # Union of A, B and C.
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+"""
+Updates the set calling the update() method with union of A , B & C.
+For below example Set A will be updated with union of A,B & C.
+"""
+A.update(B,C)
+A
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+
+A = {1,2,3,4,5}
+B = {4,5,6,7,8}
+A & B # Intersection of A and B (Common items in both sets)
+{4, 5}
+A.intersection(B) #Intersection of A and B
+{4, 5}
+
+
+"""
+Updates the set calling the intersection_update() method with the intersection of
+For below example Set A will be updated with the intersection of A & B.
+"""
+A.intersection_update(B)
+A
+{4, 5}
+
+
+A = {1,2,3,4,5}
+B = {4,5,6,7,8}
+A - B # set of elements that are only in A but not in B
+{1, 2, 3}
+A.difference(B) # Difference of sets
+{1, 2, 3}
+B- A # set of elements that are only in B but not in A
+{6, 7, 8}
+B.difference(A)
+{6, 7, 8}
+
+"""
+Updates the set calling the difference_update() method with the difference of set
+For below example Set B will be updated with the difference of B & A.
+"""
+B.difference_update(A)
+B
+{6, 7, 8}
+
+
+
+A = {1,2,3,4,5}
+B = {4,5,6,7,8}
+A ^ B # Symmetric difference (Set of elements in A and B but not in both. "EXCLUD
+{1, 2, 3, 6, 7, 8}
+A.symmetric_difference(B) # Symmetric difference of sets
+{1, 2, 3, 6, 7, 8}
+
+"""
+Updates the set calling the symmetric_difference_update() method with the symmetr
+For below example Set A will be updated with the symmetric difference of A & B.
+"""
+A.symmetric_difference_update(B)
+A
+{1, 2, 3, 6, 7, 8}
+
+
+
+A = {1,2,3,4,5,6,7,8,9}
+B = {3,4,5,6,7,8}
+C = {10,20,30,40}
+B.issubset(A) # Set B is said to be the subset of set A if all elements of B are
+A.issuperset(B) # Set A is said to be the superset of set B if all elements of B 
+C.isdisjoint(A) # Two sets are said to be disjoint sets if they have no common el
+B.isdisjoint(A) # Two sets are said to be disjoint sets if they have no common el
+A
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+sum(A)
+max(A)
+min(A)
+len(A)
+list(enumerate(A))
+[(0, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9)]
+D= sorted(A,reverse=True)
+D
+[9, 8, 7, 6, 5, 4, 3, 2, 1]
+sorted(D)
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+
+
+mydict = dict() # empty dictionary
+mydict = {} # empty dictionary
+mydict = {1:'one' , 2:'two' , 3:'three'} # dictionary with integer keys
+mydict = {'A':'one' , 'B':'two' , 'C':'three'} # dictionary with character keys
+mydict = {1:'one' , 'A':'two' , 3:'three'} # dictionary with mixed keys
+mydict.keys() # Return Dictionary Keys using keys() method
+	dict_keys([1, 'A', 3])
+mydict.values() # Return Dictionary Values using values() method
+	dict_values(['one', 'two', 'three'])
+mydict.items() # Access each key-value pair within a dictionary 
+	 dict_items([(1, 'one'), ('A', 'two'), (3, 'three')])
+
+keys = {'a' , 'b' , 'c' , 'd'}
+mydict3 = dict.fromkeys(keys) # Create a dictionary from a sequence of keys
+mydict3
+
+	{'c': None, 'd': None, 'a': None, 'b': None}
+
+keys = {'a' , 'b' , 'c' , 'd'}
+value = 10
+mydict3 = dict.fromkeys(keys , value) # Create a dictionary from a sequence of k
+mydict3
+
+	{'c': 10, 'd': 10, 'a': 10, 'b': 10}
+
+keys = {'a' , 'b' , 'c' , 'd'}
+value = [10,20,30]
+mydict3 = dict.fromkeys(keys , value) # Create a dictionary from a sequence of k
+mydict3
+
+	{'c': [10, 20, 30], 'd': [10, 20, 30], 'a': [10, 20, 30], 'b': [10, 20, 30]}
+
+value.append(40)
+mydict3
+
+{'c': [10, 20, 30, 40],
+ 'd': [10, 20, 30, 40],
+ 'a': [10, 20, 30, 40],
+ 'b': [10, 20, 30, 40]}
+
+mydict = {1:'one' , 2:'two' , 3:'three' , 4:'four'}
+mydict
+
+	{1: 'one', 2: 'two', 3: 'three', 4: 'four'}
+
+mydict[1] # Access item using key
+mydict.get(1) # Access item using get() method
+
+mydict1 = {'Name':'Asif' , 'ID': 74123 , 'DOB': 1991 , 'job' :'Analyst'}
+mydict1
+
+{'Name': 'Asif', 'ID': 74123, 'DOB': 1991, 'job': 'Analyst'}
+
+
+mydict1['Name'] # Access item using key	'Asif'
+mydict1.get('job') # Access item using get() method	'Analyst'
+mydict1['DOB'] = 1992 # Changing Dictionary Items
+mydict1['Address'] = 'Delhi'
+
+dict1 = {'DOB':1995}
+mydict1.update(dict1)
+
+mydict1['Job'] = 'Analyst' # Adding items in the dictionary
+mydict1.pop('Job') # Removing items in the dictionary using Pop method
+mydict1.popitem() # A random item is removed
+del[mydict1['ID']] # Removing item using del method
+mydict1.clear() # Delete all items of the dictionary using clear method
+del mydict1 # Delete the dictionary object
+mydict2 = mydict.copy() # Create a copy of the dictionary & it won't be impacted by any other dictionary
+
+for i in mydict1:
+ print(i , ':' , mydict1[i]) # Key & value pair
+
+Name : Asif
+ID : 12345
+DOB : 1991
+Address : Hilsinki
+Job : Analyst
+
+
+for i in mydict1:
+ print(mydict1[i]) # Dictionary items
+
+Asif
+12345
+1991
+Hilsinki
+Analyst
+
+
+'Name' in mydict1 # Test if a key is in a dictionary or not.
+'Asif' in mydict1 # Membership test can be only done for keys.  False
+
+
+mydict1 = {'Name':'Asif' , 'ID': 12345 , 'DOB': 1991 , 'Job': 'Analyst'}
+all(mydict1) #True
+any(mydict1) #True
+
+{'Name': 'Asif', 'ID': 12345, 'DOB': 1991, 'Job': 'Analyst', 0: 'test1'}
+all(mydict1) #False
+any(mydict1) #True
+
+double = {i:i*2 for i in range(10)} #double each value using dict comprehension
+double
+{0: 0, 1: 2, 2: 4, 3: 6, 4: 8, 5: 10, 6: 12, 7: 14, 8: 16, 9: 18}
+
+square = {i:i**2 for i in range(10)}
+square
+ {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+
+key = ['one' , 'two' , 'three' , 'four' , 'five']
+value = [1,2,3,4,5]
+mydict = {k:v for (k,v) in zip(key,value)} # using dict comprehension to create d
+mydict
+ {'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5}
+
+mydict1 = {'a':10 , 'b':20 , 'c':30 , 'd':40 , 'e':50}
+mydict1 = {k:v/10 for (k,v) in mydict1.items()} # Divide all values in a dictiona
+mydict1
+{'a': 1.0, 'b': 2.0, 'c': 3.0, 'd': 4.0, 'e': 5.0}
+
+str1 = "Natural Language Processing"
+mydict2 = {k:v for (k,v) in enumerate(str1)} # Store enumerated values in a dicti
+mydict2
+{0: 'N',
+ 1: 'a',
+ 2: 't',
+ 3: 'u',
+ 4: 'r',
+ 5: 'a',
+ 6: 'l
+
+str1 = "abcdefghijklmnopqrstuvwxyz"
+mydict3 = {i:i.upper() for i in str1} # Lower to Upper Case
+mydict3
+{'a': 'A',
+ 'b': 'B',
+ 'c': 'C',
+ 'd': 'D',
+ 'e': 'E',
+ 'f': 'F',
+ 'g': 'G',
+
+
+mystr4 = "one two three four one two two three five five six seven six seven one
+mylist = mystr4.split() # Split String into substrings
+mylist
+['one',
+ 'two',
+ 'three',
+ 'four',
+ 'one',
+ 'two',
+ 'two',
+
+mylist1 = set(mylist) # Unique values in a list
+mylist1 = list (mylist1)
+mylist1
+['nine',
+ 'one',
+ 'eight',
+ 'two',
+ 'seven',
+
+# Calculate frequenct of each word
+count1 = [0] * len(mylist1)
+mydict5 = dict()
+for i in range(len(mylist1)):
+ for j in range(len(mylist)):
+ if mylist1[i] == mylist[j]:
+ count1[i] += 1
+ mydict5[mylist1[i]] = count1[i]
+print(mydict5)
+
+{'nine': 2, 'one': 5, 'eight': 1, 'two': 3, 'seven': 2, 'ten': 4, 'four': 1, 'f
+ive': 2, 'three': 2, 'eleven': 1, 'six': 2}
+
